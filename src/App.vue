@@ -12,7 +12,7 @@
 
        </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark class="purple darken-1">
+    <v-toolbar dark class="primary">
 
       <v-toolbar-side-icon
       @click="sideNav = !sideNav"

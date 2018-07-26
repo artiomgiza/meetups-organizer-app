@@ -2,37 +2,49 @@
   <v-app>
      <v-navigation-drawer v-model="sideNav" absolute temporary>
        <v-list>
-
-         <v-list-tile>
-           <v-list-tile-action>
-            <v-icon>supervisor_account</v-icon>
-           </v-list-tile-action>
-           <v-list-tile-content>Vue meetups</v-list-tile-content>
+         <v-list-tile
+         v-for="item in menuItems"
+         :key="item.title"
+         router
+         :to="item.link">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              {{ item.title }}
+            </v-list-tile-content>
          </v-list-tile>
-
        </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark class="primary">
 
+    <v-toolbar dark class="primary">
       <v-toolbar-side-icon
       @click="sideNav = !sideNav"
-      class="hidden-sm-and-up">
-      </v-toolbar-side-icon>
+      class="hidden-sm-and-up"></v-toolbar-side-icon>
 
-      <v-toolbar-title>DevMeetup</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer">DevMeetup</router-link>
+      </v-toolbar-title>
+
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat dark>
-          <v-icon left>supervisor_account</v-icon>
-          View meetups
+        <v-btn
+        flat
+        v-for="item in menuItems"
+        :key="item.title"
+        router
+        :to="item.link">
+          <v-icon left dark>{{ item.icon }}</v-icon>
+         {{ item.title }}
         </v-btn>
       </v-toolbar-items>
 
     </v-toolbar>
 
     <main>
-      XXX
-      XXX
+      <router-view>
+
+      </router-view>
     </main>
 
   </v-app>
@@ -42,7 +54,14 @@
 export default {
   data () {
     return {
-      sideNav: false
+      sideNav: false,
+      menuItems: [
+        {icon: 'supervisor_account', title: 'View meetups', link: '/meetups'},
+        {icon: 'room', title: 'Organize meetups', link: '/meetup/new'},
+        {icon: 'person', title: 'Profile', link: '/profile'},
+        {icon: 'face', title: 'Sign Up', link: '/signup'},
+        {icon: 'lock_open', title: 'Sign In', link: '/signin'}
+      ]
     }
   },
   name: 'App'

@@ -17,6 +17,7 @@
             :key="meetup.id"
             :src="meetup.imageUrl"
           >
+          <!-- todo: FIX TITLE CLASS -->
           <div class="title"> {{ meetup.title }}</div>
           </v-carousel-item>
         </v-carousel>

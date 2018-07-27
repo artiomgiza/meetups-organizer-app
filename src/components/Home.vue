@@ -17,7 +17,6 @@
             :key="meetup.id"
             :src="meetup.imageUrl"
           >
-          <!-- todo: FIX TITLE CLASS -->
           <div class="title"> {{ meetup.title }}</div>
           </v-carousel-item>
         </v-carousel>
@@ -49,7 +48,7 @@ export default {
   .title {
     position: absolute;
     bottom: 50px;
-    background-color: rgba(0,0,0,0,5);
+    background-color:rgba(0,0,0,0.5);
     color: white;
     font-size: 2em;
     padding: 20px;

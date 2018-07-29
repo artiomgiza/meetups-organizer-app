@@ -52,14 +52,26 @@
 export default {
   data () {
     return {
-      sideNav: false,
-      menuItems: [
-        {icon: 'supervisor_account', title: 'View meetups', link: '/meetups'},
-        {icon: 'room', title: 'Organize meetups', link: '/meetup/new'},
-        {icon: 'person', title: 'Profile', link: '/profile'},
+      sideNav: false
+    }
+  },
+  computed: {
+    menuItems () {
+      let menuItems = [
         {icon: 'face', title: 'Sign Up', link: '/signup'},
         {icon: 'lock_open', title: 'Sign In', link: '/signin'}
       ]
+      if (this.userIsAuthanticated) {
+        menuItems = [
+                  {icon: 'supervisor_account', title: 'View meetups', link: '/meetups'},
+        {icon: 'room', title: 'Organize meetups', link: '/meetup/new'},
+        {icon: 'person', title: 'Profile', link: '/profile'}
+        ]
+      }
+      return menuItems
+    },
+    userIsAuthanticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   },
   name: 'App'

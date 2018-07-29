@@ -20,4 +20,6 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-Includes all material until (including) lesson 7
+Firebase project details:
+https://console.firebase.google.com/u/1/project/meetupsorganizer-7d7d7/ml
+

@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
         imageUrl: 'https://media-cdn.tripadvisor.com/media/photo-s/0e/9a/e3/1d/freedom-tower.jpg',
         id: '1230',
         title: 'meetup in NY',
-        date: '2017-02-17',
+        date: new Date(),
         location: 'New York, Brooklin',
         description: 'New York New York New York New York New York New York New York New York New York New York New York'
       },
@@ -18,7 +18,7 @@ export const store = new Vuex.Store({
         imageUrl: 'https://cms-internationsgmbh.netdna-ssl.com/cdn/image/185x104_3x/public/05464aed70351712911b20beae6c2d286cbc4c82cc6df36dfd22eb81038da7bf.jpg',
         id: '1231',
         title: 'meetup in Paris',
-        date: '2017-02-19',
+        date: new Date(),
         location: 'Paris, Almam',
         description: 'Paris Paris Paris Paris Paris Paris Paris Paris Paris '
       }

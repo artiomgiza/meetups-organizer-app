@@ -1,5 +1,6 @@
 <template>
   <div>
-    <p>The Profile page</p>
+    Work in progress :)
+
   </div>
 </template>

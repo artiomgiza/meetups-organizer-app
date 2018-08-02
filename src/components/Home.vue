@@ -2,10 +2,10 @@
   <v-container>
     <v-layout row wrap class="mb-2">
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large router to="/meetups" class="primary">Explore Meetups</v-btn>
+        <v-btn large router to="/meetups" class="primary">Explore Owl Meetups</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large router to="/meetup/new" class="primary">Orginize Meetups</v-btn>
+        <v-btn large router to="/meetup/new" class="primary">Create Owl Meetup</v-btn>
       </v-flex>
     </v-layout>
 
@@ -23,7 +23,7 @@
 
     <v-layout row wrap class="mt-2" v-if="!loading">
       <v-flex xs12>
-        <v-carousel style="cursor: pointer;">
+        <v-carousel class="carousel">
           <v-carousel-item
             v-for="meetup in meetups"
             :src="meetup.imageUrl"
@@ -38,7 +38,7 @@
 
     <v-layout row wrap class="mt-2">
       <v-flex xs12 class="text-xs-center">
-        <p>Join our awsome meetups!</p>
+        <p>Join our awsome owls meetups!</p>
       </v-flex>
     </v-layout>
 
@@ -70,5 +70,9 @@ export default {
     color: white;
     font-size: 2em;
     padding: 20px;
+  }
+  .carousel {
+    cursor: pointer;
+    height: 55vh !important;
   }
 </style>

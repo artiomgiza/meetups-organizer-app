@@ -35,7 +35,7 @@
       class="hidden-sm-and-up"></v-toolbar-side-icon>
 
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">DevMeetup</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">Owl Meetups</router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -85,7 +85,7 @@ export default {
       if (this.userIsAuthanticated) {
         menuItems = [
         {icon: 'supervisor_account', title: 'View meetups', link: '/meetups'},
-        {icon: 'room', title: 'Organize meetups', link: '/meetup/new'},
+        {icon: 'room', title: 'Create meetup', link: '/meetup/new'},
         {icon: 'person', title: 'Profile', link: '/profile'}
         ]
       }

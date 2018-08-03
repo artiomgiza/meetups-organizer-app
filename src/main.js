@@ -17,6 +17,8 @@ import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
 import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
 import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
 
+import DateTimeDialog from './components/Meetup/Create/DateTimeDialog'
+
 Vue.use(Toast, {
   type: 'center',
   duration: 4000,
@@ -33,6 +35,8 @@ Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog)
 Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
 Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog)
 Vue.component('app-meetup-register-dialog', RegisterDialog)
+
+Vue.component('app-set-meetup-date-dialog', DateTimeDialog)
 
 /* eslint-disable no-new */
 new Vue({

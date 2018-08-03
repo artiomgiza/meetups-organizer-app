@@ -4,10 +4,27 @@
 		  <br>
 		  <br>
       <v-btn @click="openLoading()">Profile loading 3 sec</v-btn>
+
+      <br>
+      <br>
+
+      <app-set-meetup-date-dialog
+        v-on:meetup-date="date = $event"
+        v-on:meetup-time="time = $event"
+        v-on:meetup-date-time="dateTime = $event; onSetDate($event)">
+      </app-set-meetup-date-dialog>
     </div>
 </template>
+
 <script>
   export default {
+    data () {
+      return {
+        date: '',
+        time: '',
+        dateTime: new Date()
+      }
+    },
     methods: {
       openCenter () {
         this.$toast(':)')
@@ -21,6 +38,9 @@
       },
       closeLoading () {
         this.$loading.close()
+      },
+      onSetDate (e) {
+        console.log(e)
       }
     }
 }

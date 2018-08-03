@@ -93,27 +93,20 @@ export default {
           return snapshot.ref.getDownloadURL()   // Will return a promise with the download link
         })
         .then(downloadURL => {
-          console.log(`Successfully uploaded file and got download link - ${downloadURL}`)
-          return downloadURL
-        })
-        .catch(error => {
-          // Use to signal error if something goes wrong.
-          console.log(`Failed to upload file and get link - ${error}`)
-        })
-        .then(imageUrl => {
-          console.log('File available at', imageUrl)
+          console.log('File available at', downloadURL)
+          imageUrl = downloadURL
           return firebase.database().ref('meetups').child(key).update({imageUrl: imageUrl})
         })
-      .then(() => {
-        commit('createMeetup', {
-          ...meetup,
-          imageUrl: imageUrl,
-          id: key
+        .then(() => {
+          commit('createMeetup', {
+            ...meetup,
+            imageUrl: imageUrl,
+            id: key
+          })
         })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     updateMeetupData ({commit}, payload) {
       commit('setLoading', true)

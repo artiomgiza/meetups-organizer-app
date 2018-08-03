@@ -3,6 +3,9 @@ import App from './App'
 
 import * as firebase from 'firebase'
 
+import 'vue2-toast/lib/toast.css'
+import Toast from 'vue2-toast'
+
 import router from './router'
 import Vuetify from 'vuetify'
 import './stylus/main.styl'
@@ -13,6 +16,13 @@ import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsD
 import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
 import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
 import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
+
+Vue.use(Toast, {
+  type: 'center',
+  duration: 4000,
+  wordWrap: true,
+  width: '280px'
+})
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false

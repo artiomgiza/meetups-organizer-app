@@ -133,6 +133,7 @@ export default {
         date: this.submittableDateTime
       }
       this.$store.dispatch('createMeetup', meetupData)
+      this.$toast('<br><h2>Owls are happier now!</h2> <br> <h3> Mew meetup on the way!</h3><br>')
       this.$router.push('/meetups')
     },
     onPickFile () {

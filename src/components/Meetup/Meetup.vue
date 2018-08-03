@@ -40,15 +40,29 @@
                 :meetup="meetup"
                 v-if="userIsCreator">
                 </app-edit-meetup-time-dialog>
-              </div>
 
+                 <app-delete-meetup-dialog
+                :meetup="meetup"
+                v-if="userIsCreator">
+                </app-delete-meetup-dialog>
+              </div>
               <div>{{ meetup.description }} </div>
             </v-card-text>
             <v-card-actions>
+              <v-btn
+              left
+              color="primary"
+              class="mb-3"
+              to="/meetups">
+              <v-icon left>arrow_back</v-icon>
+              Back</v-btn>
+
               <v-spacer></v-spacer>
+
               <app-meetup-register-dialog
               :meetupId="meetup.id"
-              v-if="userIsAuthenticated && !userIsCreator"></app-meetup-register-dialog>
+              v-if="userIsAuthenticated && !userIsCreator"
+              class="mr-3 mb-3"></app-meetup-register-dialog>
             </v-card-actions>
         </v-card>
       </v-flex>

@@ -6,6 +6,7 @@
           <v-card color="primary">
             <v-container fluid>
               <v-layout row>
+
                 <v-flex xs5 sm4 nd3>
                    <v-card-media
                    meetup.imageUrl
@@ -13,6 +14,7 @@
                     height="130px"
                   ></v-card-media>
                 </v-flex>
+
                 <v-flex xs7 sm8 nd9>
                   <v-card-title primary-title>
                     <div>
@@ -27,6 +29,7 @@
                       </v-btn>
                   </v-card-actions>
                 </v-flex>
+
               </v-layout>
             </v-container>
           </v-card>

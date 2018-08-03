@@ -104,7 +104,10 @@ export default {
   },
   computed: {
     formIsValid () {
-      return this.title !== '' && this.location !== ''
+      return this.title !== '' &&
+      this.location !== '' &&
+      this.description !== '' &&
+      this.image !== null
     }
   },
   methods: {
@@ -123,7 +126,7 @@ export default {
         date: this.dateTime
       }
       this.$store.dispatch('createMeetup', meetupData)
-      this.$toast('<br><h2>Owls are happier now!</h2> <br> <h3> Mew meetup on the way!</h3><br>')
+      this.$toast('<br><h2>Owls are happier now!</h2> <br> <h3> Mew meetup is on the way!</h3><br>')
       this.$router.push('/meetups')
     },
     onPickFile () {

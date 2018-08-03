@@ -12,11 +12,13 @@ import './stylus/main.styl'
 import { store } from './store'
 import DateFilter from './filters/date'
 import AlertCmp from './components/Shared/Alert'
+
 import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
 import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
 import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
-import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
+import DeleteMeetupDialog from './components/Meetup/Edit/DeleteMeetupDialog'
 
+import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
 import DateTimeDialog from './components/Meetup/Create/DateTimeDialog'
 
 Vue.use(Toast, {
@@ -34,9 +36,10 @@ Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog)
 Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
 Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog)
-Vue.component('app-meetup-register-dialog', RegisterDialog)
+Vue.component('app-delete-meetup-dialog', DeleteMeetupDialog)
 
-Vue.component('app-set-meetup-date-dialog', DateTimeDialog)
+Vue.component('app-meetup-register-dialog', RegisterDialog)
+Vue.component('app-date-time-dialog', DateTimeDialog)
 
 /* eslint-disable no-new */
 new Vue({

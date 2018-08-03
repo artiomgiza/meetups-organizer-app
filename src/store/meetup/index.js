@@ -41,6 +41,11 @@ export default {
       if (payload.date) {
         meetup.date = payload.date
       }
+    },
+    deleteMeetup (state, payload) {
+      state.loadedMeetups = state.loadedMeetups.filter(meetup => {
+        return meetup.id !== payload.id
+      })
     }
   },
   actions: {
@@ -124,6 +129,18 @@ export default {
       .then(() => {
         commit('setLoading', false)
         commit('updateMeetup', payload)
+      })
+      .catch(error => {
+        console.log(error)
+        commit('setLoading', false)
+      })
+    },
+    deleteMeetup ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('meetups').child(payload.id).remove()
+      .then(() => {
+        commit('setLoading', false)
+        commit('deleteMeetup', payload)
       })
       .catch(error => {
         console.log(error)

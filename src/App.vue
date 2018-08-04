@@ -85,7 +85,7 @@ export default {
       if (this.userIsAuthanticated) {
         menuItems = [
         {icon: 'supervisor_account', title: 'View meetups', link: '/meetups'},
-        {icon: 'room', title: 'Create meetup', link: '/meetup/new'},
+        {icon: 'add', title: 'Create meetup', link: '/meetup/new'},
         {icon: 'person', title: 'Profile', link: '/profile'}
         ]
       }

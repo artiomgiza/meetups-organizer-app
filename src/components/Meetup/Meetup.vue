@@ -16,34 +16,32 @@
     <v-layout row wrap v-else>
       <v-flex xs12>
         <v-card>
-            <v-card-title>
-              <h3 class="primary--text">{{ meetup.title }}</h3>
-              <template v-if="userIsCreator">
-                <v-spacer></v-spacer>
 
-                <v-btn
+            <v-card-media
+              :src="meetup.imageUrl"
+              height="400px"
+            >
+            <span
+            class="headline white--text ml-3 mt-3"
+            v-text="meetup.title">
+            </span>
+
+            <template v-if="userIsCreator">
+              <v-spacer></v-spacer>
+              <v-btn
+              class="mt-3 mr-3"
                 :meetup="meetup"
                 fab
                 v-if="userIsCreator"
                 :to="'/meetup/edit/' + meetup.id">
                 <v-icon>edit</v-icon>
-                </v-btn>
+              </v-btn>
+            </template>
+            </v-card-media>
 
-              </template>
-            </v-card-title>
-
-            <v-card-media
-              :src="meetup.imageUrl"
-              height="400px"
-            ></v-card-media>
             <v-card-text>
               <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }} </div>
-
               <div>
-
-
-
-
               </div>
               <div>{{ meetup.description }} </div>
             </v-card-text>
@@ -51,6 +49,7 @@
             <v-card-actions>
               <v-btn
               left
+              flat
               color="primary"
               class="mb-3"
               to="/meetups">

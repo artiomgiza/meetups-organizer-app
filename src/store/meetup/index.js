@@ -28,19 +28,29 @@ export default {
     createMeetup (state, payload) {
       state.loadedMeetups.push(payload)
     },
-    updateMeetup (state, payload) {
+    // updateMeetup (state, payload) {
+    //   const meetup = state.loadedMeetups.find(meetup => {
+    //     return meetup.id === payload.id
+    //   })
+    //   if (payload.title) {
+    //     meetup.title = payload.title
+    //   }
+    //   if (payload.description) {
+    //     meetup.description = payload.description
+    //   }
+    //   if (payload.date) {
+    //     meetup.date = payload.date
+    //   }
+    // },
+    updateFullMeetup (state, payload) {
       const meetup = state.loadedMeetups.find(meetup => {
         return meetup.id === payload.id
       })
-      if (payload.title) {
-        meetup.title = payload.title
-      }
-      if (payload.description) {
-        meetup.description = payload.description
-      }
-      if (payload.date) {
-        meetup.date = payload.date
-      }
+      meetup.title = payload.title
+      meetup.location = payload.location
+      meetup.image = payload.image
+      meetup.description = payload.description
+      meetup.date = payload.date
     },
     deleteMeetup (state, payload) {
       state.loadedMeetups = state.loadedMeetups.filter(meetup => {
@@ -113,22 +123,42 @@ export default {
           console.log(error)
         })
     },
-    updateMeetupData ({commit}, payload) {
+    // updateMeetupData ({commit}, payload) {
+    //   commit('setLoading', true)
+    //   const updateObj = {}
+    //   if (payload.title) {
+    //     updateObj.title = payload.title
+    //   }
+    //   if (payload.description) {
+    //     updateObj.description = payload.description
+    //   }
+    //   if (payload.date) {
+    //     updateObj.date = payload.date
+    //   }
+    //   firebase.database().ref('meetups').child(payload.id).update(updateObj)
+    //   .then(() => {
+    //     commit('setLoading', false)
+    //     commit('updateMeetup', payload)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //     commit('setLoading', false)
+    //   })
+    // },
+    updateFullMeetupData ({commit}, payload) {
       commit('setLoading', true)
-      const updateObj = {}
-      if (payload.title) {
-        updateObj.title = payload.title
-      }
-      if (payload.description) {
-        updateObj.description = payload.description
-      }
-      if (payload.date) {
-        updateObj.date = payload.date
+
+      const updateObj = {
+        title: payload.title,
+        location: payload.location,
+        // image: payload.image,
+        description: payload.description,
+        date: payload.date
       }
       firebase.database().ref('meetups').child(payload.id).update(updateObj)
       .then(() => {
         commit('setLoading', false)
-        commit('updateMeetup', payload)
+        commit('updateFullMeetup', payload)
       })
       .catch(error => {
         console.log(error)

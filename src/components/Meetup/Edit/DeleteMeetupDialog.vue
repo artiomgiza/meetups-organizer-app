@@ -1,7 +1,10 @@
 <template>
   <v-dialog width="350px" v-model="deleteDialofIsOpen">
-    <v-btn accent slot="activator">
-    <!-- <v-icon>Delete</v-icon> -->
+    <v-btn
+    accent
+    slot="activator"
+    class="red--text darken-1">
+    <v-icon left>clear</v-icon>
     Delete
     </v-btn>
 

@@ -13,10 +13,8 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import AlertCmp from './components/Shared/Alert'
 
-import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
-import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
-import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
 import DeleteMeetupDialog from './components/Meetup/Edit/DeleteMeetupDialog'
+import EditMeetup from './components/Meetup/Edit/EditMeetup'
 
 import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
 import DateTimeDialog from './components/Meetup/Create/DateTimeDialog'
@@ -33,10 +31,8 @@ Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
-Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog)
-Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
-Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog)
 Vue.component('app-delete-meetup-dialog', DeleteMeetupDialog)
+Vue.component('app-edit-meetup', EditMeetup)
 
 Vue.component('app-meetup-register-dialog', RegisterDialog)
 Vue.component('app-date-time-dialog', DateTimeDialog)

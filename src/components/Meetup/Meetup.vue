@@ -20,9 +20,18 @@
               <h3 class="primary--text">{{ meetup.title }}</h3>
               <template v-if="userIsCreator">
                 <v-spacer></v-spacer>
-                <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog>
+
+                <v-btn
+                :meetup="meetup"
+                fab
+                v-if="userIsCreator"
+                :to="'/meetup/edit/' + meetup.id">
+                <v-icon>edit</v-icon>
+                </v-btn>
+
               </template>
             </v-card-title>
+
             <v-card-media
               :src="meetup.imageUrl"
               height="400px"
@@ -31,23 +40,14 @@
               <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }} </div>
 
               <div>
-                <app-edit-meetup-date-dialog
-                :meetup="meetup"
-                v-if="userIsCreator">
-                </app-edit-meetup-date-dialog>
 
-                <app-edit-meetup-time-dialog
-                :meetup="meetup"
-                v-if="userIsCreator">
-                </app-edit-meetup-time-dialog>
 
-                 <app-delete-meetup-dialog
-                :meetup="meetup"
-                v-if="userIsCreator">
-                </app-delete-meetup-dialog>
+
+
               </div>
               <div>{{ meetup.description }} </div>
             </v-card-text>
+
             <v-card-actions>
               <v-btn
               left
@@ -55,14 +55,23 @@
               class="mb-3"
               to="/meetups">
               <v-icon left>arrow_back</v-icon>
-              Back</v-btn>
+              Back
+              </v-btn>
 
               <v-spacer></v-spacer>
 
               <app-meetup-register-dialog
               :meetupId="meetup.id"
               v-if="userIsAuthenticated && !userIsCreator"
-              class="mr-3 mb-3"></app-meetup-register-dialog>
+              class="mr-3 mb-3">
+              </app-meetup-register-dialog>
+
+              <app-delete-meetup-dialog
+              class="mr-3 mb-3"
+                :meetup="meetup"
+                v-if="userIsCreator">
+              </app-delete-meetup-dialog>
+
             </v-card-actions>
         </v-card>
       </v-flex>

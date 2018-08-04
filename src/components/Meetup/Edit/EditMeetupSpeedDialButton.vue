@@ -6,7 +6,6 @@
       :top=true
       :right=true
       direction='bottom'
-      :open-on-hover=true
       :transition="transition"
     >
       <v-btn

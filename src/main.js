@@ -15,6 +15,7 @@ import AlertCmp from './components/Shared/Alert'
 
 import DeleteMeetupDialog from './components/Meetup/Edit/DeleteMeetupDialog'
 import EditMeetup from './components/Meetup/Edit/EditMeetup'
+import EditMeetupSpeedDialButton from './components/Meetup/Edit/EditMeetupSpeedDialButton'
 
 import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
 import DateTimeDialog from './components/Meetup/Create/DateTimeDialog'
@@ -33,6 +34,7 @@ Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-delete-meetup-dialog', DeleteMeetupDialog)
 Vue.component('app-edit-meetup', EditMeetup)
+Vue.component('app-edit-meetup-speed-dial', EditMeetupSpeedDialButton)
 
 Vue.component('app-meetup-register-dialog', RegisterDialog)
 Vue.component('app-date-time-dialog', DateTimeDialog)

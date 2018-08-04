@@ -28,14 +28,11 @@
 
             <template v-if="userIsCreator">
               <v-spacer></v-spacer>
-              <v-btn
-              class="mt-3 mr-3"
-                :meetup="meetup"
-                fab
-                v-if="userIsCreator"
-                :to="'/meetup/edit/' + meetup.id">
-                <v-icon>edit</v-icon>
-              </v-btn>
+
+              <app-edit-meetup-speed-dial
+              :meetup="meetup">
+              </app-edit-meetup-speed-dial>
+
             </template>
             </v-card-media>
 
@@ -64,12 +61,6 @@
               v-if="userIsAuthenticated && !userIsCreator"
               class="mr-3 mb-3">
               </app-meetup-register-dialog>
-
-              <app-delete-meetup-dialog
-              class="mr-3 mb-3"
-                :meetup="meetup"
-                v-if="userIsCreator">
-              </app-delete-meetup-dialog>
 
             </v-card-actions>
         </v-card>

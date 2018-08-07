@@ -21,6 +21,8 @@ import EditMeetupSpeedDialButton from './components/Meetup/Edit/EditMeetupSpeedD
 import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
 import DateTimeDialog from './components/Meetup/Create/DateTimeDialog'
 
+import EditableMap from './components/Map/EditableMap'
+
 Vue.use(Toast, {
   type: 'center',
   duration: 4000,
@@ -70,6 +72,8 @@ Vue.component('app-edit-meetup-speed-dial', EditMeetupSpeedDialButton)
 
 Vue.component('app-meetup-register-dialog', RegisterDialog)
 Vue.component('app-date-time-dialog', DateTimeDialog)
+
+Vue.component('app-editable-map', EditableMap)
 
 /* eslint-disable no-new */
 new Vue({

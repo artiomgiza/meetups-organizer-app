@@ -23,18 +23,6 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-              name="location"
-              label="Location"
-              id="location"
-              v-model="location"
-              append-icon="place"
-              required></v-text-field>
-            </v-flex>
-          </v-layout>
-
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
               <v-textarea
               name="description"
               label="Description"
@@ -52,6 +40,12 @@
                 v-on:meetup-date-time="dateTime = $event">
                 </app-date-time-dialog>
             </v-flex>
+          </v-layout>
+
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <app-editable-map v-on:meetup-location="setLocation($event)"></app-editable-map>
+             </v-flex>
           </v-layout>
 
           <v-layout row>
@@ -96,6 +90,7 @@ export default {
     return {
       title: '',
       location: '',
+      locationLatLng: {},
       description: '',
       imageUrl: '',
       dateTime: new Date(),
@@ -111,6 +106,10 @@ export default {
     }
   },
   methods: {
+    setLocation (loc) {
+      this.location = loc.address
+      this.locationLatLng = { lat: loc.lat, lng: loc.lng }
+    },
     onCreateMeetup () {
       if (!this.formIsValid) {
         return
@@ -121,6 +120,7 @@ export default {
       const meetupData = {
         title: this.title,
         location: this.location,
+        locationLatLng: this.locationLatLng,
         image: this.image,
         description: this.description,
         date: this.dateTime

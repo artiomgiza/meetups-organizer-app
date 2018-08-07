@@ -48,6 +48,7 @@ export default {
       })
       meetup.title = payload.title
       meetup.location = payload.location
+      meetup.locationLatLng = payload.locationLatLng
       meetup.image = payload.image
       meetup.description = payload.description
       meetup.date = payload.date
@@ -66,12 +67,20 @@ export default {
         const meetups = []
         const obj = data.val()
         for (let key in obj) {
+          let locationLatLng = {lat: 22, lng: 22}
+          if (obj[key].locationLatLng && obj[key].locationLatLng.includes(':')) {
+            locationLatLng = {
+              lat: Number(obj[key].locationLatLng.split(':')[0]),
+              lng: Number(obj[key].locationLatLng.split(':')[1])
+            }
+          }
           meetups.push({
             id: key,
             title: obj[key].title,
             description: obj[key].description,
             imageUrl: obj[key].imageUrl,
             location: obj[key].location,
+            locationLatLng: locationLatLng,
             date: obj[key].date,
             creatorId: obj[key].creatorId
           })
@@ -88,6 +97,7 @@ export default {
       const meetup = {
         title: payload.title,
         location: payload.location,
+        locationLatLng: payload.locationLatLng.lat + ':' + payload.locationLatLng.lng,
         description: payload.description,
         date: payload.date.toISOString(),
         creatorId: getters.user.id
@@ -151,6 +161,7 @@ export default {
       const updateObj = {
         title: payload.title,
         location: payload.location,
+        locationLatLng: payload.locationLatLng,
         // image: payload.image,
         description: payload.description,
         date: payload.date

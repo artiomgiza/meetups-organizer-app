@@ -23,18 +23,6 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-              name="location"
-              label="Location"
-              id="location"
-              v-model="location"
-              append-icon="place"
-              required></v-text-field>
-            </v-flex>
-          </v-layout>
-
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
               <v-textarea
               name="description"
               label="Description"
@@ -44,6 +32,17 @@
               required>
               </v-textarea>
             </v-flex>
+          </v-layout>
+
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <app-editable-map
+              v-on:meetup-location="setLocation($event)"
+              :locationLatLng="locationLatLng">
+              </app-editable-map>
+
+              <v-divider class="mt-4 mb-4"></v-divider>
+             </v-flex>
           </v-layout>
 
            <v-layout row>
@@ -107,6 +106,7 @@ export default {
     return {
       title: '',
       location: '',
+      locationLatLng: {},
       description: '',
       imageUrl: '',
       dateTime: new Date(),
@@ -125,6 +125,11 @@ export default {
     }
   },
   methods: {
+    setLocation (loc) {
+      console.log('=>', loc)
+      this.location = loc.address
+      this.locationLatLng = { lat: loc.lat, lng: loc.lng }
+    },
     onUpdateMeetup () {
       console.log('onUpd')
       if (!this.formIsValid) {
@@ -138,11 +143,11 @@ export default {
         id: this.id,
         title: this.title,
         location: this.location,
+        locationLatLng: this.locationLatLng,
         image: this.image,
         description: this.description,
         date: this.dateTime
       }
-      console.log('=>', this)
 
       this.$store.dispatch('updateFullMeetupData', meetupData)
       //
@@ -169,16 +174,13 @@ export default {
     }
   },
   created () {
-    console.log('->', this.originalMeetup)
-
     this.title = this.originalMeetup.title
     this.location = this.originalMeetup.location
+    this.locationLatLng = this.originalMeetup.locationLatLng
     this.description = this.originalMeetup.description
     this.imageUrl = this.originalMeetup.imageUrl
     this.dateTime = this.originalMeetup.dateTime
     this.image = this.originalMeetup.image
-
-    console.log('->', this.dateTime)
   }
 }
 </script>

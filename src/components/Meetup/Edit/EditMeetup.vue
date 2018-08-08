@@ -113,6 +113,15 @@ export default {
       image: null
     }
   },
+  created () {
+    this.title = this.originalMeetup.title
+    this.location = this.originalMeetup.location
+    this.locationLatLng = this.originalMeetup.locationLatLng
+    this.description = this.originalMeetup.description
+    this.imageUrl = this.originalMeetup.imageUrl
+    this.dateTime = this.originalMeetup.dateTime
+    this.image = this.originalMeetup.image
+  },
   computed: {
     originalMeetup () {
       return this.$store.getters.loadedMeetup(this.id)
@@ -172,15 +181,6 @@ export default {
       fileReader.readAsDataURL(files[0])
       this.image = files[0]
     }
-  },
-  created () {
-    this.title = this.originalMeetup.title
-    this.location = this.originalMeetup.location
-    this.locationLatLng = this.originalMeetup.locationLatLng
-    this.description = this.originalMeetup.description
-    this.imageUrl = this.originalMeetup.imageUrl
-    this.dateTime = this.originalMeetup.dateTime
-    this.image = this.originalMeetup.image
   }
 }
 </script>

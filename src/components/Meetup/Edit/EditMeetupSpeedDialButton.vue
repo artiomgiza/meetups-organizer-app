@@ -5,7 +5,7 @@
       v-model="fab"
       :top=true
       :right=true
-      direction='bottom'
+      direction='left'
       :transition="transition"
     >
       <v-btn

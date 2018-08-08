@@ -67,20 +67,13 @@ export default {
         const meetups = []
         const obj = data.val()
         for (let key in obj) {
-          let locationLatLng = {lat: 22, lng: 22}
-          if (obj[key].locationLatLng && obj[key].locationLatLng.includes(':')) {
-            locationLatLng = {
-              lat: Number(obj[key].locationLatLng.split(':')[0]),
-              lng: Number(obj[key].locationLatLng.split(':')[1])
-            }
-          }
           meetups.push({
             id: key,
             title: obj[key].title,
             description: obj[key].description,
             imageUrl: obj[key].imageUrl,
             location: obj[key].location,
-            locationLatLng: locationLatLng,
+            locationLatLng: obj[key].locationLatLng,
             date: obj[key].date,
             creatorId: obj[key].creatorId
           })
@@ -97,7 +90,7 @@ export default {
       const meetup = {
         title: payload.title,
         location: payload.location,
-        locationLatLng: payload.locationLatLng.lat + ':' + payload.locationLatLng.lng,
+        locationLatLng: payload.locationLatLng,
         description: payload.description,
         date: payload.date.toISOString(),
         creatorId: getters.user.id

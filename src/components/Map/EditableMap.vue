@@ -1,7 +1,13 @@
 <template>
   <v-container>
-    <v-icon color="primary">location_on</v-icon>
+    <v-icon
+    v-if="mode=='edit'"
+    color="primary">
+    location_on
+    </v-icon>
+
     <GmapAutocomplete
+      v-if="mode == 'edit'"
       style="width:90%; height: 35px;font-size:16px;"
       class="mb-2"
       placeholder="Insert meetup location here"
@@ -56,7 +62,7 @@
 
 <script>
 export default {
-  props: ['locationLatLng', 'address'],
+  props: ['mode', 'locationLatLng', 'address'],
   data () {
     return {
       center: {lat: 32.073480, lng: 34.783966},

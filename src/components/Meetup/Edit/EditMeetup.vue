@@ -53,6 +53,7 @@
       <v-layout row>
         <v-flex xs12 sm6 offset-sm3>
           <app-editable-map
+          mode="edit"
           v-on:meetup-location="setLocation($event)"
           :locationLatLng="locationLatLng"
           :address="location">
@@ -65,8 +66,11 @@
 
             <v-divider class="mb-3"></v-divider>
 
-            <app-date-time-dialog class="mb-3"
+            <app-date-time-dialog
+            :dateTime="dateTime"
+            class="mb-3"
             v-on:meetup-date-time="dateTime = $event">
+
             </app-date-time-dialog>
 
             <v-divider class="mb-3"></v-divider>
@@ -134,12 +138,13 @@ export default {
     this.locationLatLng = this.originalMeetup.locationLatLng
     this.description = this.originalMeetup.description
     this.imageUrl = this.originalMeetup.imageUrl
-    this.dateTime = this.originalMeetup.dateTime
+    this.dateTime = this.originalMeetup.date
     this.image = this.originalMeetup.image
   },
   computed: {
     originalMeetup () {
-      return this.$store.getters.loadedMeetup(this.id)
+      let res = this.$store.getters.loadedMeetup(this.id)
+      return res
     },
     formIsValid () {
       return this.title !== '' &&

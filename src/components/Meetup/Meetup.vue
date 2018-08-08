@@ -1,6 +1,11 @@
 <template>
   <v-container>
 
+    <span
+    class="headline black--text"
+    v-text="meetup.title">
+    </span>
+
     <v-layout row wrap v-if="loading">
       <v-flex xs12 class="text-xs-center">
           <v-progress-circular
@@ -13,18 +18,22 @@
       </v-flex>
     </v-layout>
 
+
     <v-layout row wrap v-else>
       <v-flex xs12>
         <v-card>
-
             <v-card-media
               :src="meetup.imageUrl"
               height="400px"
             >
-            <span
-            class="headline white--text ml-3 mt-3"
-            v-text="meetup.title">
-            </span>
+
+            <v-btn
+            fab
+            color="primary"
+            class="ml-3 mt-3"
+            to="/meetups">
+            <v-icon>arrow_back</v-icon>
+            </v-btn>
 
             <template v-if="userIsCreator">
               <v-spacer></v-spacer>
@@ -34,6 +43,18 @@
               </app-edit-meetup-speed-dial>
 
             </template>
+
+            <template v-else>
+              <v-spacer></v-spacer>
+              <app-meetup-register-dialog
+              :meetupId="meetup.id"
+              v-if="userIsAuthenticated && !userIsCreator"
+              class="mr-3 mt-3">
+              </app-meetup-register-dialog>
+
+            </template>
+
+
             </v-card-media>
 
             <v-card-text>
@@ -43,26 +64,16 @@
               <div>{{ meetup.description }} </div>
             </v-card-text>
 
-            <v-card-actions>
-              <v-btn
-              left
-              flat
-              color="primary"
-              class="mb-3"
-              to="/meetups">
-              <v-icon left>arrow_back</v-icon>
-              Back
-              </v-btn>
 
-              <v-spacer></v-spacer>
+          <app-editable-map
+          mode="present"
+          :locationLatLng="meetup.locationLatLng"
+          :address="meetup.location">
+          </app-editable-map>
 
-              <app-meetup-register-dialog
-              :meetupId="meetup.id"
-              v-if="userIsAuthenticated && !userIsCreator"
-              class="mr-3 mb-3">
-              </app-meetup-register-dialog>
 
-            </v-card-actions>
+
+
         </v-card>
       </v-flex>
     </v-layout>

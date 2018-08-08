@@ -44,7 +44,9 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <app-editable-map v-on:meetup-location="setLocation($event)"></app-editable-map>
+              <app-editable-map
+              mode="edit"
+              v-on:meetup-location="setLocation($event)"></app-editable-map>
              </v-flex>
           </v-layout>
 

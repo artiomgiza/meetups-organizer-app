@@ -2,6 +2,8 @@
   <v-dialog v-model="registerDialog">
     <v-btn
       color="primary"
+      round
+      large
       accent slot="activator">
       <v-icon left>done</v-icon>
       {{ userIsRegistered ? 'Unregister' : 'Register' }}

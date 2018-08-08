@@ -8,7 +8,7 @@
         Set Date and Time
       </div>
       <div v-else>
-        {{ editableDateTime.toString().slice(0, 24) }}
+        {{ editableDateTime.toString().slice(0, 21) }}
       </div>
     </v-btn>
 
@@ -65,6 +65,7 @@
 
 <script>
 export default {
+  props: ['dateTime'],
   data () {
     return {
       dateDialogIsOpened: false,
@@ -73,6 +74,14 @@ export default {
       editableTime: new Date(),
       editableDateTime: new Date()
     }
+  },
+  created () {
+    this.editableDateTime = new Date(this.dateTime)
+
+    const newDay = new Date(this.dateTime).getUTCDate()
+    const newMonth = new Date(this.dateTime).getUTCMonth()
+    const newYear = new Date(this.dateTime).getUTCFullYear()
+    this.editableDate = newYear + '-' + newMonth + '-' + newDay
   },
   methods: {
     onDateSaveChanges () {

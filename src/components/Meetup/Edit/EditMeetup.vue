@@ -54,7 +54,8 @@
         <v-flex xs12 sm6 offset-sm3>
           <app-editable-map
           v-on:meetup-location="setLocation($event)"
-          :locationLatLng="locationLatLng">
+          :locationLatLng="locationLatLng"
+          :address="location">
           </app-editable-map>
           </v-flex>
       </v-layout>

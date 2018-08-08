@@ -5,8 +5,12 @@
       style="width:90%; height: 35px;font-size:16px;"
       class="mb-2"
       placeholder="Insert meetup location here"
-      @place_changed="setPlace">
+      @place_changed="setPlace"
+      :value="address"
+      >
     </GmapAutocomplete>
+
+    <!-- <v-icon color="gray" @click="addressAsText = ''">cancel</v-icon> -->
 
     <GmapMap
       ref="mapRef"
@@ -25,7 +29,7 @@
       />
       <GmapMarker
             v-if="this.place"
-            label="★"
+            label="?"
             :position="{
               lat: this.place.geometry.location.lat(),
               lng: this.place.geometry.location.lng(),
@@ -52,7 +56,7 @@
 
 <script>
 export default {
-  props: ['locationLatLng'],
+  props: ['locationLatLng', 'address'],
   data () {
     return {
       center: {lat: 32.073480, lng: 34.783966},

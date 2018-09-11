@@ -23,6 +23,8 @@ import DateTimeDialog from './components/Meetup/Create/DateTimeDialog'
 
 import EditableMap from './components/Map/EditableMap'
 
+import ImageCropperDialog from './components/CropImage/Dialog'
+
 Vue.use(Toast, {
   type: 'center',
   duration: 4000,
@@ -74,6 +76,7 @@ Vue.component('app-meetup-register-dialog', RegisterDialog)
 Vue.component('app-date-time-dialog', DateTimeDialog)
 
 Vue.component('app-editable-map', EditableMap)
+Vue.component('vue-cropper-dialog', ImageCropperDialog)
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,11 +1,20 @@
 <template>
   <v-container>
-    <v-layout row wrap class="mb-2">
+    <v-layout row wrap class="mb-2 hidden-sm-and-up">
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large router to="/meetups" class="primary">Explore Owl Meetups</v-btn>
-      </v-flex>
-      <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large router to="/meetup/new" class="primary">Create Owl Meetup</v-btn>
+        <v-btn
+        fab
+        router to="/meetups"
+        class="primary">
+        <v-icon>supervisor_account</v-icon>
+        </v-btn>
+
+        <v-btn
+        fab
+        router to="/meetup/new"
+        class="primary">
+        <v-icon>add</v-icon>
+        </v-btn>
       </v-flex>
     </v-layout>
 
@@ -23,13 +32,16 @@
 
     <v-layout row wrap class="mt-2" v-if="!loading">
       <v-flex xs12>
-        <v-carousel class="carousel">
+        <v-carousel
+        class="carousel text-xs-center"
+        hide-delimiters
+        >
           <v-carousel-item
             v-for="meetup in meetups"
-            :src="meetup.imageUrl"
             :key="meetup.id"
             @click.native="onLoadMeetup(meetup.id)"
           >
+          <img :src="meetup.imageUrl" alt="" style="height:100%; " >
           <div class="title"> {{ meetup.title }}</div>
           </v-carousel-item>
         </v-carousel>
@@ -65,14 +77,14 @@ export default {
 <style scoped>
   .title {
     position: absolute;
-    bottom: 50px;
+    bottom: 0px;
     background-color:rgba(0,0,0,0.5);
     color: white;
-    font-size: 2em;
-    padding: 20px;
+    font-size: 1em;
+    padding: 10px;
   }
   .carousel {
     cursor: pointer;
-    height: 55vh !important;
+    height: 35vh !important;
   }
 </style>

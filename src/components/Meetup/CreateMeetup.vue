@@ -52,21 +52,13 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-btn raised class="primary" @click="onPickFile">
-                <v-icon dark left>add_photo_alternate</v-icon>
-                Add image</v-btn>
-              <input
-              type="file"
-              style="display: none"
-              ref="fileInput"
-              accept="image/*"
-              @change="onFilePicked">
-            </v-flex>
+              <vue-cropper-dialog @img="imageChoosen($event)"></vue-cropper-dialog>
+             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <img :src="imageUrl" width="50%" class="ml-2 mt-3 mb-2">
+              <img :src="imagePreview" width="96%" class="ml-2 mt-3 mb-2">
             </v-flex>
           </v-layout>
 
@@ -94,7 +86,7 @@ export default {
       location: '',
       locationLatLng: {},
       description: '',
-      imageUrl: '',
+      imagePreview: '',
       dateTime: new Date(),
       image: null
     }
@@ -131,22 +123,24 @@ export default {
       this.$toast('<br><h2>Owls are happier now!</h2> <br> <h3> Mew meetup is on the way!</h3><br>')
       this.$router.push('/meetups')
     },
-    onPickFile () {
-      this.$refs.fileInput.click()
-    },
-    onFilePicked (event) {
-      const files = event.target.files
-      let fileName = files[0].name
-      if (fileName.lastIndexOf('.') <= 0) {
-        return alert('plz add valid file')
+    imageChoosen (img) {
+      // convert base64 to file
+      function dataURLtoFile (dataurl, filename) {
+        let arr = dataurl.split(',')
+        let mime = arr[0].match(/:(.*?);/)[1]
+        let bstr = atob(arr[1])
+        let n = bstr.length
+        let u8arr = new Uint8Array(n)
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n)
+        }
+        return new File([u8arr], filename, {type: mime})
       }
-      const fileReader = new FileReader()
-      fileReader.addEventListener('load', () => {
-        this.imageUrl = fileReader.result
-      })
-      fileReader.readAsDataURL(files[0])
-      this.image = files[0]
+
+      this.image = dataURLtoFile(img, 'a.png')
+      this.imagePreview = img
     }
   }
+
 }
 </script>

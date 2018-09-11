@@ -78,10 +78,12 @@ export default {
   created () {
     this.editableDateTime = new Date(this.dateTime)
 
-    const newDay = new Date(this.dateTime).getUTCDate()
-    const newMonth = new Date(this.dateTime).getUTCMonth()
-    const newYear = new Date(this.dateTime).getUTCFullYear()
-    this.editableDate = newYear + '-' + newMonth + '-' + newDay
+    if (this.dateTime) {
+      const newDay = new Date(this.dateTime).getUTCDate()
+      const newMonth = new Date(this.dateTime).getUTCMonth()
+      const newYear = new Date(this.dateTime).getUTCFullYear()
+      this.editableDate = newYear + '-' + newMonth + '-' + newDay
+    }
   },
   methods: {
     onDateSaveChanges () {

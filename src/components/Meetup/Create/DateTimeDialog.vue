@@ -76,11 +76,11 @@ export default {
     }
   },
   created () {
-    this.editableDateTime = new Date(this.dateTime)
-
     if (this.dateTime) {
+      this.editableDateTime = new Date(this.dateTime)
+
       const newDay = new Date(this.dateTime).getUTCDate()
-      const newMonth = new Date(this.dateTime).getUTCMonth()
+      const newMonth = new Date(this.dateTime).getUTCMonth() + 1 // 0 based
       const newYear = new Date(this.dateTime).getUTCFullYear()
       this.editableDate = newYear + '-' + newMonth + '-' + newDay
     }

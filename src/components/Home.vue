@@ -23,8 +23,8 @@
           <v-progress-circular
             indeterminate
             color="primary"
-            :width="7"
-            :size="70"
+            :width="5"
+            :size="60"
             v-if="loading"
           ></v-progress-circular>
       </v-flex>
@@ -34,6 +34,7 @@
       <v-flex xs12>
         <v-carousel
         class="carousel text-xs-center"
+        :style="hhh"
         hide-delimiters
         >
           <v-carousel-item
@@ -41,7 +42,12 @@
             :key="meetup.id"
             @click.native="onLoadMeetup(meetup.id)"
           >
-          <img :src="meetup.imageUrl" alt="" style="height:100%; " >
+          <v-img
+          :src="meetup.imageUrl"
+          alt=":)"
+          style="height:100%;" >
+          </v-img>
+
           <div class="title"> {{ meetup.title }}</div>
           </v-carousel-item>
         </v-carousel>
@@ -56,20 +62,40 @@
 
   </v-container>
 </template>
+
 <script>
 export default {
+  data () {
+    return {
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth
+    }
+  },
   computed: {
     meetups () {
       return this.$store.getters.loadedMeetups
     },
     loading () {
       return this.$store.getters.loading
+    },
+    hhh () {
+      let res = 60 * this.windowWidth / this.windowHeight
+      if (res > 71) { res = 71 }
+      return 'height: ' + res + 'vh !important;'
     }
   },
   methods: {
     onLoadMeetup (id) {
       this.$router.push('/meetups/' + id)
     }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.windowHeight = window.innerHeight
+        this.windowWidth = window.innerWidth
+      })
+    })
   }
 }
 </script>
@@ -85,6 +111,9 @@ export default {
   }
   .carousel {
     cursor: pointer;
-    height: 35vh !important;
+    /* -webkit-box-shadow: none;
+         -moz-box-shadow: none;
+         box-shadow: none; */
+    /* height: 35vh !important; */
   }
 </style>

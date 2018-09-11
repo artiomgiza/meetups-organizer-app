@@ -21,10 +21,10 @@
 
     <v-layout row wrap v-else>
       <v-flex xs12>
-        <v-card>
-            <v-card-media
+
+            <v-img
               :src="meetup.imageUrl"
-              height="400px"
+              :height="hhh"
             >
 
             <v-btn
@@ -36,12 +36,9 @@
             </v-btn>
 
             <template v-if="userIsCreator">
-              <v-spacer></v-spacer>
-
               <app-edit-meetup-speed-dial
               :meetup="meetup">
               </app-edit-meetup-speed-dial>
-
             </template>
 
             <template v-else>
@@ -51,16 +48,12 @@
               v-if="userIsAuthenticated && !userIsCreator"
               class="mr-3 mt-3">
               </app-meetup-register-dialog>
-
             </template>
 
-
-            </v-card-media>
+            </v-img>
 
             <v-card-text>
               <div class="info--text">{{ meetup.date | date }} - {{ meetup.location }} </div>
-              <div>
-              </div>
               <div>{{ meetup.description }} </div>
             </v-card-text>
 
@@ -74,7 +67,7 @@
 
 
 
-        </v-card>
+
       </v-flex>
     </v-layout>
   </v-container>
@@ -84,6 +77,12 @@
 export default {
   props: ['id'],
   computed: {
+    hhh () {
+      let res = 60 * window.innerWidth / window.innerHeight
+      if (res > 71) { res = 71 }
+      if (res < 35) { res = 35 }
+      return res + 'vh '
+    },
     meetup () {
       return this.$store.getters.loadedMeetup(this.id)
     },

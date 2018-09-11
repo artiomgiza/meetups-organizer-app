@@ -2,24 +2,13 @@
   <v-container>
     <form @submit.prevent="onUpdateMeetup">
 
-      <v-layout row>
-        <v-flex xs12 sm6 offset-sm3>
-          <v-parallax
-            height="40"
-            :src="imageUrl"
-            style="opacity: .3;"
-            class="mb-2">
-
-            <v-layout
-              align-center
-              justify-center
-              column
-            >
-              <v-flex class="black--text">
-                <h1>Edit</h1>
-              </v-flex>
-            </v-layout>
-          </v-parallax>
+      <v-layout
+        align-center
+        justify-center
+        column
+      >
+        <v-flex class="black--text">
+          <h2>Edit meetup</h2>
         </v-flex>
       </v-layout>
 
@@ -70,7 +59,6 @@
             :dateTime="dateTime"
             class="mb-3"
             v-on:meetup-date-time="dateTime = $event">
-
             </app-date-time-dialog>
 
             <v-divider class="mb-3"></v-divider>
@@ -81,17 +69,25 @@
       <v-layout  row>
         <v-flex xs12 sm6 offset-sm3 class="mb-2" >
 
-          <v-parallax
-          height="280"
-          :src="imageUrl"
-          style=" opacity: .3;"
-          >
-            <v-flex class="black--text">
-              <h1>Meetup Image</h1>
-            </v-flex>
-          </v-parallax>
+                <v-img
+                  :src="imageUrl"
+                >
+                  <v-layout
+                    slot="placeholder"
+                    fill-height
+                    align-center
+                    justify-center
+                    ma-0
+                  >
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                  </v-layout>
+                </v-img>
+                * currently image can't be updated
         </v-flex>
       </v-layout>
+
+
+
 
       <v-layout row >
         <v-flex xs12 sm6 offset-sm3 class="text-xs-center">

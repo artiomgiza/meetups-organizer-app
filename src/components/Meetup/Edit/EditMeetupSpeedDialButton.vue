@@ -1,5 +1,5 @@
 <template>
-  <v-card id="create">
+  <div id="create">
 
     <v-speed-dial
       v-model="fab"
@@ -29,14 +29,6 @@
         <v-icon>edit</v-icon>
       </v-btn>
 
-      <!-- <v-btn
-        fab
-        dark
-        small
-        color="indigo"
-      >
-        <v-icon>add</v-icon>
-      </v-btn> -->
 
       <v-btn
         fab
@@ -56,7 +48,7 @@
     :meetup="meetup"
     >
     </app-delete-meetup-dialog>
-  </v-card>
+  </div>
 </template>
 
 

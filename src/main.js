@@ -12,6 +12,7 @@ import Vuetify from 'vuetify'
 import './stylus/main.styl'
 import { store } from './store'
 import DateFilter from './filters/date'
+import TimeFilter from './filters/time'
 import AlertCmp from './components/Shared/Alert'
 
 import DeleteMeetupDialog from './components/Meetup/Edit/DeleteMeetupDialog'
@@ -29,7 +30,7 @@ Vue.use(Toast, {
   type: 'center',
   duration: 4000,
   wordWrap: true,
-  width: '280px'
+  width: '320px'
 })
 
 /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +68,7 @@ Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
+Vue.filter('time', TimeFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-delete-meetup-dialog', DeleteMeetupDialog)
 Vue.component('app-edit-meetup', EditMeetup)

@@ -19,18 +19,19 @@
           <v-flex  xs12 sm10 md8 offset-sm1 offset-md2 >
             <v-card color="primary" :to="'/meetups/' + meetup.id">
               <v-layout>
-                <v-flex xs5 sm4 nd3 class="ml-2 mb-2 mt-2">
-                   <v-card-media
+                <v-flex xs7 sm6 md5 class="ml-2 mb-2 mt-2">
+                   <v-img
                     :src="meetup.imageUrl"
                     height="125px"
-                  ></v-card-media>
+                  ></v-img>
                 </v-flex>
 
-                <v-flex xs7>
+                <v-flex xs5>
                   <v-card-title primary-title>
                     <div>
                       <div class="headline">{{ meetup.title }}</div>
                       <div>{{ meetup.date | date}}</div>
+                      <div>{{ meetup.date | time}}</div>
                     </div>
                   </v-card-title>
                 </v-flex>

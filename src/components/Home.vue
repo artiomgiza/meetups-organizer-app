@@ -60,6 +60,37 @@
       </v-flex>
     </v-layout>
 
+    <v-layout row wrap class="mt-2">
+      <v-flex xs12>
+        <p>Hiush! Before you dive inside, here is a bit of unnecessary information. This project was built for two reasons.
+        The first one, of course, is to use it to organize owls meetups.
+        The second - is to practice on creation responsive Web application using
+        <ul>
+          <li> Vue</li>
+          <li> Vuetify</li>
+          <li> Material design</li>
+          <li> Firebase - Auth/Database/Storage</li>
+          <li> Google Maps - Places/Autocomplete</li>
+          <li> ...</li>
+        </ul>
+</p>
+
+
+        <p>Based on wonderful Academind
+        <a target="_blank"  href="https://www.youtube.com/watch?v=FXY1UyQfSFw&list=PL55RiY5tL51qxUbODJG9cgrsVd7ZHbPrt">
+        project</a> with my own touch. If you interested to read some code, the sources is
+        <a target="_blank"  href="https://github.com/artiomgiza/meetups-organizer-app">here</a>.
+
+        </p>
+
+        <p>
+        And, yes... Work still in progress. Last deploy: 12.09.2018
+        </p>
+
+      </v-flex>
+
+    </v-layout>
+
   </v-container>
 </template>
 

@@ -62,7 +62,7 @@
 
     <v-layout row wrap class="mt-2">
       <v-flex xs12>
-        <p>Hiush! Before you dive inside, here is a bit of unnecessary information. This project was built for two reasons.
+        <p>Hiush! This project was built for two reasons.
         The first one, of course, is to use it to organize owls meetups.
         The second - is to practice on creation responsive Web application using
         <ul>
@@ -84,7 +84,7 @@
         </p>
 
         <p>
-        And, yes... Work still in progress. Last deploy: 12.09.2018
+        And, yes... Work still in progress. Last deploy: 13.09.2018
         </p>
 
       </v-flex>

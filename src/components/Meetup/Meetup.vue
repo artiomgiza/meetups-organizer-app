@@ -42,11 +42,11 @@
             </template>
 
             <template v-else>
-              <v-spacer></v-spacer>
+
               <app-meetup-register-dialog
               :meetupId="meetup.id"
               v-if="userIsAuthenticated && !userIsCreator"
-              class="mr-3 mt-3">
+              class="right mr-3 mt-3">
               </app-meetup-register-dialog>
             </template>
 

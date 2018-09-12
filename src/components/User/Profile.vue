@@ -1,69 +1,27 @@
  <template>
   <v-container>
-  <v-layout row>
 
-    <v-flex xs12 sm6 offset-sm3>
+    <v-layout row>
+      <v-flex xs12 sm6 offset-sm3>
 
-      <GmapAutocomplete @place_changed="setPlace"></GmapAutocomplete>
-      <v-btn @click="usePlace">Add</v-btn>
+        <v-icon
+          style="float: left"
+          color="primary"
+          size="40"
+          @click="openCenter()"
+          dark>face
+        </v-icon>
 
-      <br/><br/>
+        <div style="float: left;
+                    text-align: right;
+                    margin: 2px 10px;"
+                    class="primary--text">
+          <font size="5"> {{ user }}</font>
+        </div>
 
-      <GmapMap
-        ref="mapRef"
-        :center="center"
-        :zoom="15"
-        map-type-id="terrain"
-        style="width: 100%; height: 350px"
-      >
-        <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center=m.position"
-        />
-        <GmapMarker
-              v-if="this.place"
-              label="★"
-              :position="{
-                lat: this.place.geometry.location.lat(),
-                lng: this.place.geometry.location.lng(),
-              }"
-              />
+      </v-flex>
+    </v-layout>
 
-      </GmapMap>
-
-      <v-divider class="mt-4 mb-4"></v-divider>
-    </v-flex>
-
-  </v-layout>
-
-  <v-layout row>
-
-    <v-flex xs12 sm6 offset-sm3>
-      <v-avatar
-        color="primary"
-        size="70"
-        @click="openCenter()"
-      >
-        <v-icon dark>account_circle</v-icon>
-      </v-avatar>
-
-
-      <v-avatar
-        color="primary"
-        size="70"
-        class="ml-4"
-        @click="openLoading()"
-      >
-        <v-icon dark>account_circle</v-icon>
-      </v-avatar>
-
-    </v-flex>
-
-  </v-layout>
 
   <br>
 
@@ -91,15 +49,23 @@ export default {
       ]
     }
   },
-  mounted () {
-    // At this point, the child GmapMap has been mounted, but
-    // its map has not been initialized.
-    // Therefore we need to write mapRef.$mapPromise.then(() => ...)
+  computed: {
+    user () {
+      let user = this.$store.getters.user
 
-    this.$refs.mapRef.$mapPromise.then((map) => {
-      this.getLocation()
-      map.panTo(this.center)
-    })
+      if (user) {
+        if (user.displayName) {
+          return user.displayName
+        } else {
+          return 'Guest'
+        }
+      } else {
+        return 'friend'
+      }
+    }
+  },
+  mounted () {
+
   },
   methods: {
     setPlace (place) {

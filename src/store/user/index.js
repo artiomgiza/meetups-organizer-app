@@ -64,9 +64,9 @@ export default {
       .then(
         user => {
           commit('setLoading', false)
-          commit('setLoading', false)
           const newUser = {
             id: user.user.uid,
+            displayName: user.user.displayName,
             registeredMeetups: [],
             fbKeys: {}
           }
@@ -90,6 +90,7 @@ export default {
           commit('setLoading', false)
           const newUser = {
             id: user.user.uid,
+            displayName: user.user.email,
             registeredMeetups: [], // <======================================== later
             fbKeys: {}
           }
@@ -104,20 +105,45 @@ export default {
         }
       )
     },
-    signUserInWithGoogle ({commit}, payload) {
+    signUserInWithGoogle ({commit}) {
       commit('setLoading', true)
       commit('clearError')
 
       const provider = new firebase.auth.GoogleAuthProvider()
-
       firebase.auth().signInWithPopup(provider)
+      .then(
+        user => {
+          console.log(user)
+          commit('setLoading', false)
+          const newUser = {
+            id: user.user.uid,
+            displayName: user.user.displayName,
+            registeredMeetups: [], // <======================================== later
+            fbKeys: {}
+          }
+          console.log(newUser)
+
+          commit('setUser', newUser)
+        }
+      )
+      .catch(
+        error => {
+          commit('setLoading', false)
+          commit('setError', error)
+          console.log(error)
+        }
+      )
+    },
+    onSigninWithAnonimus ({commit}) {
+      commit('setLoading', true)
+      commit('clearError')
+
+      firebase.auth().signInAnonymously()
       .then(
         user => {
           commit('setLoading', false)
           const newUser = {
-            id: user.user.uid,
-            registeredMeetups: [], // <======================================== later
-            fbKeys: {}
+            displayName: 'Guest'
           }
           commit('setUser', newUser)
         }
@@ -133,6 +159,7 @@ export default {
     autoSignIn ({commit}, payload) {
       commit('setUser', {
         id: payload.uid,
+        displayName: payload.displayName ? payload.displayName : payload.email,
         registeredMeetups: [],
         fbKeys: {}
       })
@@ -150,6 +177,7 @@ export default {
         }
         const updatedUser = {
           id: getters.user.id,
+          displayName: getters.user.displayName,
           registeredMeetups: registeredMeetups,
           fbKeys: swappedPairs
         }

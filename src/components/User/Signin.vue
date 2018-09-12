@@ -11,13 +11,25 @@
     <v-layout class="mb-3">Login with:</v-layout>
     <v-btn
     fab
-    flat
+
     @click="onSigninWithGoogle">
-      <v-img height="52px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/></v-img>
+      <v-img height="52px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"></v-img>
+    </v-btn>
+
+    <v-btn
+    style="color:light-gray"
+    fab
+    @click="onSigninWithAnonimus">
+
+    <span>
+      <v-icon class="ml-3">face</v-icon>
+      <br>
+      Guest
+    </span>
+
     </v-btn>
 
     <v-layout class="mb-3 mt-3">Or:</v-layout>
-
   </v-flex>
 
 </v-layout>
@@ -105,7 +117,10 @@ export default {
       this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
     },
     onSigninWithGoogle () {
-      this.$store.dispatch('signUserInWithGoogle', {email: this.email, password: this.password})
+      this.$store.dispatch('signUserInWithGoogle')
+    },
+    onSigninWithAnonimus () {
+      this.$store.dispatch('onSigninWithAnonimus')
     },
     onDismissed () {
       this.$store.dispatch('clearError')

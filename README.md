@@ -1,4 +1,5 @@
-# meetups-organizer-app
+# Example:
+https://meetups-666.firebaseapp.com/
 
 > Meetup organizing app with Vue + Vuetify + Firebase
 

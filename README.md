@@ -1,4 +1,5 @@
 Play with me here: https://meetups-666.firebaseapp.com/
+(use desktop/mobile to play with responsiveness)
 
 > Meetup organizing app with Vue + Vuetify + Firebase
 

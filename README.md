@@ -1,5 +1,6 @@
-> Meetup organizing app with Vue + Vuetify + Firebase
 Play with me here: https://meetups-666.firebaseapp.com/
+
+> Meetup organizing app with Vue + Vuetify + Firebase
 
 
 ## Build Setup
